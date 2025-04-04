@@ -17,7 +17,7 @@ int main()
     const float pasiva_probabilidad_inicial = 0.5;
     float pasiva_probabilidad = pasiva_probabilidad_inicial;
 
-    /// TIENDA
+    // TIENDA
     const int valor_x_soldado       = 1000;
     const int valor_x_comida        = 500;
     const int valor_x_mejora_pasiva = 10000;
@@ -27,11 +27,11 @@ int main()
     const int articulo_comida          = 500;
     const float articulo_mejora_pasiva = 0.1;
 
-    /// BATALLA
+    // BATALLA
     const int duracion_guerra = 10;
     int batalla_actual = 0;
 
-    /// ESTADISTICAS
+    // ESTADISTICAS
     const int batalla_cantidad_victorias = 0;
     const int batalla_cantidad_derrotas  = 0;
     const int total_gastado_oro          = 0;
