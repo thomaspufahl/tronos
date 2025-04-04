@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -9,10 +11,10 @@ int main()
     int juego_oro = juego_presupuesto_base;
 
     const int juego_soldados_base = 0;
-    int juego_soldados = soldados_base;
+    int juego_soldados = juego_soldados_base;
 
     const int juego_comida_base = 0;
-    int juego_comida = comida_base;
+    int juego_comida = juego_comida_base;
 
     const float juego_pasiva_base = 0.5;
     float juego_pasiva= juego_pasiva_base;
@@ -72,7 +74,11 @@ int main()
 
     int aux_tienda_gasto;
 
+    // Generador de numeros aleatorios
+    srand(time(0));
+    float batalla_pasiva;
 
+    /// MENU
     while(true)
     {
         system("cls");
@@ -140,11 +146,18 @@ int main()
                 }
 
                 /// INICIO
-                cout << "Batalla NRO " << batalla_actual;
+                cout << "Batalla NRO " << batalla_actual << endl << endl;
 
                 // pasiva Lannister
+                batalla_pasiva = (float)(rand() % 100) / 100;
 
+                cout << "NRO RANDOM: " << batalla_pasiva << endl;
 
+                if (batalla_pasiva < juego_pasiva)
+                {
+                    cout << "PASIVA ACTIVADA!" << endl;
+                    est_batalla_pasiva_uso_cantidad++;
+                }
 
                 /// CIERRE
                 cout << endl;
@@ -239,7 +252,7 @@ int main()
                         {
                             if (juego_oro >= tienda_valor_x_mejora_pasiva)
                             {
-                                juego_pasiva_probabilidad += tienda_articulo_mejora_pasiva;
+                                juego_pasiva += tienda_articulo_mejora_pasiva;
                                 juego_oro -= tienda_valor_x_mejora_pasiva;
                             }
                             else
