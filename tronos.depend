@@ -1,4 +1,6 @@
 # depslib dependency file v1.0
-1743780683 source:c:\dev\cplus\juego-de-tronos\tronos\main.cpp
+1743790120 source:c:\dev\cplus\juego-de-tronos\tronos\main.cpp
 	<iostream>
+	<cstdlib>
+	<ctime>
 

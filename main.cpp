@@ -203,8 +203,8 @@ int main()
                     cout << "HAZ GANADO LA BATALLA !!!!!" << endl;
 
                     batalla_aux_oro_ganado_parcial = rand() % 10000;
-                    batalla_aux_comida_gastado = rand() % 500;
-                    batalla_aux_soldados_gastado = rand() % 100;
+                    batalla_aux_comida_gastado     = rand() % 500;
+                    batalla_aux_soldados_gastado   = rand() % 100;
 
                     if (batalla_pasiva_eval_activada)
                     {
@@ -217,10 +217,10 @@ int main()
 
                     batalla_aux_oro_ganado_total = batalla_aux_oro_ganado_parcial + batalla_aux_oro_ganado_pasiva;
 
-                    est_batalla_pasiva_oro_ganado += batalla_aux_oro_ganado_pasiva;
-                    est_batalla_comida_perdido += batalla_aux_comida_gastado;
-                    est_batalla_soldados_perdido += batalla_aux_soldados_gastado;
-                    est_batalla_oro_ganado += batalla_aux_oro_ganado_total;
+                    est_batalla_pasiva_oro_ganado  += batalla_aux_oro_ganado_pasiva;
+                    est_batalla_comida_perdido     += batalla_aux_comida_gastado;
+                    est_batalla_soldados_perdido   += batalla_aux_soldados_gastado;
+                    est_batalla_oro_ganado         += batalla_aux_oro_ganado_total;
                     est_batalla_victorias_cantidad ++;
 
                 }
@@ -228,11 +228,11 @@ int main()
                 {
                     cout << "HAZ PERDIDO LA BATALLA !!!!!" << endl;
 
-                    batalla_aux_comida_gastado = rand() % 1000;
+                    batalla_aux_comida_gastado   = rand() % 1000;
                     batalla_aux_soldados_gastado = rand() % 500;
 
-                    est_batalla_comida_perdido += batalla_aux_comida_gastado;
-                    est_batalla_soldados_perdido += batalla_aux_soldados_gastado;
+                    est_batalla_comida_perdido    += batalla_aux_comida_gastado;
+                    est_batalla_soldados_perdido  += batalla_aux_soldados_gastado;
                     est_batalla_derrotas_cantidad ++;
 
                 }
@@ -246,10 +246,10 @@ int main()
                 cout << "Soldados gastados: "     << batalla_aux_soldados_gastado   << endl;
 
                 batalla_aux_oro_ganado_parcial = 0;
-                batalla_aux_oro_ganado_pasiva = 0;
-                batalla_aux_oro_ganado_total = 0;
-                batalla_aux_comida_gastado = 0;
-                batalla_aux_soldados_gastado = 0;
+                batalla_aux_oro_ganado_pasiva  = 0;
+                batalla_aux_oro_ganado_total   = 0;
+                batalla_aux_comida_gastado     = 0;
+                batalla_aux_soldados_gastado   = 0;
 
                 /// CIERRE
                 cout << endl;
@@ -299,9 +299,9 @@ int main()
                                 aux_tienda_gasto = tienda_valor_x_soldado;
 
                                 juego_soldados += tienda_articulo_soldados;
-                                juego_oro -= aux_tienda_gasto;
+                                juego_oro      -= aux_tienda_gasto;
 
-                                est_tienda_total_gastado_oro += aux_tienda_gasto;
+                                est_tienda_total_gastado_oro      += aux_tienda_gasto;
                                 est_tienda_total_gastado_soldados += aux_tienda_gasto;
                             }
                             else
@@ -323,9 +323,9 @@ int main()
                                 aux_tienda_gasto = tienda_valor_x_comida;
 
                                 juego_comida += tienda_articulo_comida;
-                                juego_oro -= aux_tienda_gasto;
+                                juego_oro    -= aux_tienda_gasto;
 
-                                est_tienda_total_gastado_oro += aux_tienda_gasto;
+                                est_tienda_total_gastado_oro    += aux_tienda_gasto;
                                 est_tienda_total_gastado_comida += aux_tienda_gasto;
                             }
                             else
@@ -345,7 +345,7 @@ int main()
                             if (juego_oro >= tienda_valor_x_mejora_pasiva)
                             {
                                 batalla_pasiva_probabilidad += tienda_articulo_mejora_pasiva;
-                                juego_oro -= tienda_valor_x_mejora_pasiva;
+                                juego_oro                   -= tienda_valor_x_mejora_pasiva;
                             }
                             else
                             {
