@@ -16,9 +16,6 @@ int main()
     const int juego_comida_base = 0;
     int juego_comida = juego_comida_base;
 
-    const float juego_pasiva_base = 0.5;
-    float juego_pasiva= juego_pasiva_base;
-
     // TIENDA
     const int tienda_valor_x_soldado       = 1000;
     const int tienda_valor_x_comida        = 500;
@@ -32,6 +29,27 @@ int main()
     // BATALLA
     const int batalla_duracion_guerra = 10;
     int batalla_actual = 0;
+
+    // pasiva LANNISTER
+    const float batalla_pasiva_base = 0.5;
+    float batalla_pasiva_probabilidad = batalla_pasiva_base;
+
+    const float batalla_pasiva_beneficio = 0.2; // 20% extra en oro ganado
+    float batalla_pasiva_nro_random;
+
+    bool batalla_pasiva_eval_activada;
+
+    // combate
+    int batalla_aux_oro_ganado_parcial;
+    int batalla_aux_oro_ganado_pasiva;
+    int batalla_aux_oro_ganado_total;
+    int batalla_aux_comida_gastado;
+    int batalla_aux_soldados_gastado;
+
+    bool batalla_victoria_eval;
+    float batalla_victoria_nro_random;
+    float batalla_victoria_probabilidad;
+
 
     // ESTADISTICAS
     int est_batalla_victorias_cantidad   = 0;
@@ -76,7 +94,6 @@ int main()
 
     // Generador de numeros aleatorios
     srand(time(0));
-    float batalla_pasiva;
 
     /// MENU
     while(true)
@@ -92,7 +109,7 @@ int main()
         cout << "|oro                 : " << juego_oro                  << endl;
         cout << "|comida              : " << juego_comida               << endl;
         cout << "|soldados            : " << juego_soldados             << endl;
-        cout << "|pasiva              : " << juego_pasiva               << endl;
+        cout << "|pasiva              : " << batalla_pasiva_probabilidad<< endl;
         cout << "---------------------------------------"               << endl;
         cout << idx_opcion_menu_batalla << ". IR A LA BATALLA"          << endl;
         cout << idx_opcion_menu_tienda  << ". TIENDA"                   << endl;
@@ -118,9 +135,9 @@ int main()
                     break;
                 }
 
-                cout << "Soldados: "                << juego_soldados            << endl;
-                cout << "Comida: "                  << juego_comida              << endl;
-                cout << "Probabilidad de pasiva: "  << juego_pasiva              << endl;
+                cout << "Soldados: "                << juego_soldados              << endl;
+                cout << "Comida: "                  << juego_comida                << endl;
+                cout << "Probabilidad de pasiva: "  << batalla_pasiva_probabilidad << endl;
 
                 cout << endl;
 
@@ -148,16 +165,91 @@ int main()
                 /// INICIO
                 cout << "Batalla NRO " << batalla_actual << endl << endl;
 
-                // pasiva Lannister
-                batalla_pasiva = (float)(rand() % 100) / 100;
+                /// PASIVA
+                batalla_pasiva_nro_random = (float)(rand() % 100) / 100;
 
-                cout << "NRO RANDOM: " << batalla_pasiva << endl;
+                cout << "NRO RANDOM: " << batalla_pasiva_nro_random << endl;
 
-                if (batalla_pasiva < juego_pasiva)
+                /*
+
+                 e.g: 0.2 < 0.5
+                 => la pasiva se activa ya que tenia un 50% de probabilidades de que el numero se encuentre debajo del 0.5
+
+                 e.g: 0.6 < 0.5
+                 => la pasiva no se activa ya que perdio contra el 50%
+
+                */
+
+
+                if (batalla_pasiva_nro_random < batalla_pasiva_probabilidad)
                 {
                     cout << "PASIVA ACTIVADA!" << endl;
                     est_batalla_pasiva_uso_cantidad++;
+                    batalla_pasiva_eval_activada = true;
+
+                    cout << "Si ganas, obtendras un " << batalla_pasiva_beneficio * 100 << "% de oro extra!" << endl;
                 }
+                else
+                {
+                    batalla_pasiva_eval_activada = false;
+                }
+
+                // LOGICA DE BATALLA
+                batalla_victoria_eval = (rand() % 100 / 100) < 0.5 ? true : false;
+
+
+                if (batalla_victoria_eval)
+                {
+                    cout << "HAZ GANADO LA BATALLA !!!!!" << endl;
+
+                    batalla_aux_oro_ganado_parcial = rand() % 10000;
+                    batalla_aux_comida_gastado = rand() % 500;
+                    batalla_aux_soldados_gastado = rand() % 100;
+
+                    if (batalla_pasiva_eval_activada)
+                    {
+                        batalla_aux_oro_ganado_pasiva = batalla_pasiva_beneficio * batalla_aux_oro_ganado_parcial;
+                    }
+                    else
+                    {
+                        batalla_aux_oro_ganado_pasiva = 0;
+                    }
+
+                    batalla_aux_oro_ganado_total = batalla_aux_oro_ganado_parcial + batalla_aux_oro_ganado_pasiva;
+
+                    est_batalla_pasiva_oro_ganado += batalla_aux_oro_ganado_pasiva;
+                    est_batalla_comida_perdido += batalla_aux_comida_gastado;
+                    est_batalla_soldados_perdido += batalla_aux_soldados_gastado;
+                    est_batalla_oro_ganado += batalla_aux_oro_ganado_total;
+                    est_batalla_victorias_cantidad ++;
+
+                }
+                else
+                {
+                    cout << "HAZ PERDIDO LA BATALLA !!!!!" << endl;
+
+                    batalla_aux_comida_gastado = rand() % 1000;
+                    batalla_aux_soldados_gastado = rand() % 500;
+
+                    est_batalla_comida_perdido += batalla_aux_comida_gastado;
+                    est_batalla_soldados_perdido += batalla_aux_soldados_gastado;
+                    est_batalla_derrotas_cantidad ++;
+
+                }
+
+                /// Resumen
+
+                cout << "Oro ganado en batalla: " << batalla_aux_oro_ganado_parcial << endl;
+                cout << "Oro ganado x pasiva: "   << batalla_aux_oro_ganado_pasiva  << endl;
+                cout << "Oro ganado total: "      << batalla_aux_oro_ganado_total   << endl;
+                cout << "Comida perdida: "        << batalla_aux_comida_gastado     << endl;
+                cout << "Soldados gastados: "     << batalla_aux_soldados_gastado   << endl;
+
+                batalla_aux_oro_ganado_parcial = 0;
+                batalla_aux_oro_ganado_pasiva = 0;
+                batalla_aux_oro_ganado_total = 0;
+                batalla_aux_comida_gastado = 0;
+                batalla_aux_soldados_gastado = 0;
 
                 /// CIERRE
                 cout << endl;
@@ -178,16 +270,16 @@ int main()
 
                     system("cls");
 
-                    cout << "---------------------------------------"  << endl;
-                    cout << "~LANNISTER"                               << endl;
-                    cout << "|presupuesto: " << juego_presupuesto_base << endl;
-                    cout << "|oro        : " << juego_oro              << endl;
-                    cout << "|comida     : " << juego_comida           << endl;
-                    cout << "|soldados   : " << juego_soldados         << endl;
-                    cout << "|pasiva     : " << juego_pasiva           << endl;
-                    cout << "---------------------------------------"  << endl;
-                    cout << "TIENDA" << endl;
-                    cout << "---------------------------------------"  << endl;
+                    cout << "---------------------------------------"       << endl;
+                    cout << "~LANNISTER"                                    << endl;
+                    cout << "|presupuesto: " << juego_presupuesto_base      << endl;
+                    cout << "|oro        : " << juego_oro                   << endl;
+                    cout << "|comida     : " << juego_comida                << endl;
+                    cout << "|soldados   : " << juego_soldados              << endl;
+                    cout << "|pasiva     : " << batalla_pasiva_probabilidad << endl;
+                    cout << "---------------------------------------"       << endl;
+                    cout << "TIENDA"                                        << endl;
+                    cout << "---------------------------------------"       << endl;
                     cout << "1. Soldados          $" << tienda_valor_x_soldado        << " x "  << tienda_articulo_soldados        << " unidades." << endl;
                     cout << "2. Comida            $" << tienda_valor_x_comida         << " x "  << tienda_articulo_comida          << " unidades." << endl;
                     cout << "3. Mejorar pasiva    $" << tienda_valor_x_mejora_pasiva  << " x +" << tienda_articulo_mejora_pasiva   << "." << endl;
@@ -252,7 +344,7 @@ int main()
                         {
                             if (juego_oro >= tienda_valor_x_mejora_pasiva)
                             {
-                                juego_pasiva += tienda_articulo_mejora_pasiva;
+                                batalla_pasiva_probabilidad += tienda_articulo_mejora_pasiva;
                                 juego_oro -= tienda_valor_x_mejora_pasiva;
                             }
                             else
