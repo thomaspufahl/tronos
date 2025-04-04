@@ -22,10 +22,7 @@ int main()
     const int valor_x_comida        = 500;
     const int valor_x_mejora_pasiva = 10000;
 
-    /*
-     articulo es algo que se compra en la tienda,
-     el valor refiere a la cantidad.
-    */
+    // articulo: objeto que se compra en la tienda, el valor refiere a la cantidad.
     const int articulo_soldados        = 1000;
     const int articulo_comida          = 500;
     const float articulo_mejora_pasiva = 0.1;
@@ -35,8 +32,8 @@ int main()
     int batalla_actual = 0;
 
     /// ESTADISTICAS
-    const int cantidad_victorias_batalla = 0;
-    const int cantidad_derrotas_batalla  = 0;
+    const int batalla_cantidad_victorias = 0;
+    const int batalla_cantidad_derrotas  = 0;
     const int total_gastado_oro          = 0;
     const int total_gastado_comida       = 0;
     const int total_gastado_soldados     = 0;
