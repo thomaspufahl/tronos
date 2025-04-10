@@ -3,6 +3,7 @@
 #include <ctime>
 
 using namespace std;
+#include "rlutil.h"
 
 int main()
 {
@@ -76,6 +77,10 @@ int main()
     int cin_opcion_menu;
     int cin_opcion_tienda;
     int cin_batalla_deseas_continuar;
+    int opcion_menu=0;
+    int opcion_tienda=0;
+    int tecla_menu;
+    int tecla_tienda;
 
     // validaciones
     bool eval_deseas_continuar;
@@ -98,31 +103,164 @@ int main()
     /// MENU
     while(true)
     {
-        system("cls");
 
-        cout << "---------------------------------------"               << endl;
-        cout << "            Juego de Tronos            "               << endl;
-        cout << "---------------------------------------"               << endl;
-        cout << "~LANNISTER "                                           << endl;
-        cout << "|batallas realizadas : " << batalla_actual             << endl;
-        cout << "|presupuesto         : " << juego_presupuesto_base     << endl;
-        cout << "|oro                 : " << juego_oro                  << endl;
-        cout << "|comida              : " << juego_comida               << endl;
-        cout << "|soldados            : " << juego_soldados             << endl;
-        cout << "|pasiva              : " << batalla_pasiva_probabilidad<< endl;
-        cout << "---------------------------------------"               << endl;
-        cout << idx_opcion_menu_batalla << ". IR A LA BATALLA"          << endl;
-        cout << idx_opcion_menu_tienda  << ". TIENDA"                   << endl;
-        cout << idx_opcion_menu_volver  << ". VOLVER AL MENU PRINCIPAL" << endl;
-        cout << "---------------------------------------"               << endl;
-        cout << "OPCION: ";
-        cin >> cin_opcion_menu;
+        rlutil::locate(19,27);cout << "  _____          __  __ ______    ____  ______   _______ _    _ _____   ____  _   _ ______  _____ " << endl;
+        rlutil::locate(19,28);cout << " / ____|   /\\   |  \\/  |  ____|  / __ \\|  ____| |__   __| |  | |  __ \\ / __ \\| \\ | |  ____|/ ____|" << endl;
+        rlutil::locate(19,29);cout << "| |  __   /  \\  | \\  / | |__    | |  | | |__       | |  | |__| | |__) | |  | |  \\| | |__  | (___  " << endl;
+        rlutil::locate(19,30);cout << "| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |  __|      | |  |  __  |  _  /| |  | | . ` |  __|  \\___ \\ " << endl;
+        rlutil::locate(19,31);cout << "| |__| |/ ____ \\| |  | | |____  | |__| | |         | |  | |  | | | \\ \\| |__| | |\\  | |____ ____) |" << endl;
+        rlutil::locate(19,32);cout << " \\_____/_/    \\_\\_|  |_|______|  \\____/|_|         |_|  |_|  |_|_|  \\_\\\\____/|_| \\_|______|_____/ " << endl;
 
-        system("cls");
 
-        switch(cin_opcion_menu)
+
+        ///RECUADRO EXTERIOR ----------------------------------------------------------------------------
+
+        rlutil::setBackgroundColor(rlutil::RED);
+        rlutil::locate(43,2);
+        cout<<"                                             "<<endl;
+
+
+        for (int i=3; i<23; i++)
         {
-            case idx_opcion_menu_batalla:
+            rlutil::setBackgroundColor(rlutil::RED);
+            rlutil::locate(43,i);
+            cout<<"  "<<endl;
+        }
+        rlutil::setBackgroundColor(rlutil::RED);
+        rlutil::locate(45,22);
+        cout<<"                                           "<<endl;
+        for (int i=2; i<23; i++)
+        {
+            rlutil::setBackgroundColor(rlutil::RED);
+            rlutil::locate(88,i);
+            cout<<"  "<<endl;
+        }
+
+        ///RECUADRO "JUEGO DE TRONOS" ----------------------------------------------------------------------------
+
+        rlutil::setBackgroundColor(rlutil::RED);
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::locate(47,4);
+        cout<<"---------------------------------------"<<endl;
+
+
+        rlutil::setBackgroundColor(rlutil::BROWN);
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::locate(47,5);
+        cout<<"                                       "<<endl;
+
+
+        rlutil::setBackgroundColor(rlutil::YELLOW);
+        rlutil::setColor(rlutil::BLACK);
+        rlutil::locate(51,5);
+        cout<<"        JUEGO DE TRONOS        "<<endl;
+
+
+        rlutil::setBackgroundColor(rlutil::RED);
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::locate(47,6);
+        cout<<"---------------------------------------"<<endl;
+        rlutil::setBackgroundColor(rlutil::BLACK);
+
+        rlutil::hidecursor();
+
+        ///RECUADRO "LANNISTER" ----------------------------------------------------------------------------
+
+        rlutil::setBackgroundColor(rlutil::YELLOW);
+        rlutil::setColor(rlutil::BLACK);
+        rlutil::locate(47,9);
+        cout<<"-------------  LANNISTER  -------------"<<endl;
+        rlutil::setBackgroundColor(rlutil::BLACK);
+
+        /// DATOS DEL CLAN ----------------------------------------------------------------------------
+
+        rlutil::locate(47,11);
+        rlutil::setColor(rlutil::WHITE);
+        cout << "     |Batallas realizadas : " << batalla_actual             << endl;
+        rlutil::locate(47,13);
+        cout << "     |Oro                 : " << juego_oro                  << endl;
+        rlutil::locate(47,14);
+        cout << "     |Comida              : " << juego_comida               << endl;
+        rlutil::locate(47,15);
+        cout << "     |Soldados            : " << juego_soldados             << endl;
+        rlutil::locate(47,16);
+        cout << "     |Pasiva              : " << batalla_pasiva_probabilidad<< endl;
+        rlutil::setColor(rlutil::WHITE);
+
+        /// PINTAR "IR A LA BATALLA" ----------------------------------------------------------------------------
+
+        if(opcion_menu==0)
+        {
+            rlutil::setBackgroundColor(rlutil::BROWN);
+            rlutil::locate(47,18);
+            cout<<" "<<(char)175<<"          IR A LA BATALLA          "<<(char)174<<" ";
+        }
+        else
+        {
+            rlutil::setBackgroundColor(rlutil::BLACK);
+            rlutil::locate(47,18);
+            cout<<"            IR A LA BATALLA            "<<endl;
+        }
+
+        /// PINTAR "TIENDA" ----------------------------------------------------------------------------
+
+        if(opcion_menu==1)
+        {
+            rlutil::setBackgroundColor(rlutil::BROWN);
+            rlutil::locate(47,19);
+            cout<<" "<<(char)175<<"              TIENDA               "<<(char)174<<" ";
+        }
+        else
+        {
+            rlutil::setBackgroundColor(rlutil::BLACK);
+            rlutil::locate(47,19);
+            cout<<"                TIENDA                 "<<endl;
+        }
+
+        /// PINTAR "SALIR DEL JUEGO" ----------------------------------------------------------------------------
+
+        if(opcion_menu==2)
+        {
+            rlutil::setBackgroundColor(rlutil::BROWN);
+            rlutil::locate(47,20);
+            cout<<" "<<(char)175<<"          SALIR DEL JUEGO          "<<(char)174<<" ";
+        }
+        else
+        {
+            rlutil::setBackgroundColor(rlutil::BLACK);
+            rlutil::locate(47,20);
+            cout<<"            SALIR DEL JUEGO            "<<endl;
+        }
+        rlutil::setBackgroundColor(rlutil::BLACK);
+
+        /// LOGICA DEL MENU ----------------------------------------------------------------------------
+
+        tecla_menu= rlutil::getkey();
+        switch(tecla_menu)
+        {
+        case 14: //ARRIBA
+            rlutil::locate(50,10+opcion_menu);
+            cout<<" "<<endl;
+            opcion_menu--;
+            if(opcion_menu<0)
+            {
+                opcion_menu=2;
+            }
+            break;
+        case 15: //ABAJO
+            rlutil::locate(50,10+opcion_menu);
+            cout<<" "<<endl;
+            opcion_menu++;
+            if(opcion_menu>2)
+            {
+                opcion_menu=0;
+            }
+            break;
+        case 1: //ENTER
+            system("cls");
+            switch(opcion_menu)
+            {
+            case 0: /// MENU BATALLA
             {
                 if (batalla_actual > batalla_duracion_guerra)
                 {
@@ -132,6 +270,7 @@ int main()
 
                     cout << "Presiona cualquier tecla para volver al menu.";
                     system("pause");
+                    system("cls");
                     break;
                 }
 
@@ -149,6 +288,7 @@ int main()
 
                 if (!eval_deseas_continuar)
                 {
+                    system("cls");
                     break;
                 }
 
@@ -256,43 +396,187 @@ int main()
 
                 cout << "Presiona cualquier tecla para volver al menu.";
                 system("pause");
+                system("cls");
 
                 break;
             }
-            case idx_opcion_menu_tienda:
+
+            case 1: /// MENU TIENDA
             {
-                while(true)
+
+                opcion_tienda=0;
+                while(opcion_tienda!=4)
                 {
-                    if (cin_opcion_tienda == idx_opcion_tienda_volver)
+
+                    rlutil::locate(19,27);cout << "  _____          __  __ ______    ____  ______   _______ _    _ _____   ____  _   _ ______  _____ " << endl;
+                    rlutil::locate(19,28);cout << " / ____|   /\\   |  \\/  |  ____|  / __ \\|  ____| |__   __| |  | |  __ \\ / __ \\| \\ | |  ____|/ ____|" << endl;
+                    rlutil::locate(19,29);cout << "| |  __   /  \\  | \\  / | |__    | |  | | |__       | |  | |__| | |__) | |  | |  \\| | |__  | (___  " << endl;
+                    rlutil::locate(19,30);cout << "| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |  __|      | |  |  __  |  _  /| |  | | . ` |  __|  \\___ \\ " << endl;
+                    rlutil::locate(19,31);cout << "| |__| |/ ____ \\| |  | | |____  | |__| | |         | |  | |  | | | \\ \\| |__| | |\\  | |____ ____) |" << endl;
+                    rlutil::locate(19,32);cout << " \\_____/_/    \\_\\_|  |_|______|  \\____/|_|         |_|  |_|  |_|_|  \\_\\\\____/|_| \\_|______|_____/ " << endl;
+
+                    ///RECUADRO EXTERIOR TIENDA ----------------------------------------------------------------------------
+
+                    rlutil::setBackgroundColor(rlutil::RED);
+                    rlutil::locate(43,2);
+                    cout<<"                                             "<<endl;
+
+
+                    for (int i=3; i<23; i++)
                     {
-                        break;
+                        rlutil::setBackgroundColor(rlutil::RED);
+                        rlutil::locate(43,i);
+                        cout<<"  "<<endl;
+                    }
+                    rlutil::setBackgroundColor(rlutil::RED);
+                    rlutil::locate(45,22);
+                    cout<<"                                           "<<endl;
+                    for (int i=2; i<23; i++)
+                    {
+                        rlutil::setBackgroundColor(rlutil::RED);
+                        rlutil::locate(88,i);
+                        cout<<"  "<<endl;
                     }
 
-                    system("cls");
+                    ///RECUADRO "JUEGO DE TRONOS" ----------------------------------------------------------------------------
 
-                    cout << "---------------------------------------"       << endl;
-                    cout << "~LANNISTER"                                    << endl;
-                    cout << "|presupuesto: " << juego_presupuesto_base      << endl;
-                    cout << "|oro        : " << juego_oro                   << endl;
-                    cout << "|comida     : " << juego_comida                << endl;
-                    cout << "|soldados   : " << juego_soldados              << endl;
-                    cout << "|pasiva     : " << batalla_pasiva_probabilidad << endl;
-                    cout << "---------------------------------------"       << endl;
-                    cout << "TIENDA"                                        << endl;
-                    cout << "---------------------------------------"       << endl;
-                    cout << "1. Soldados          $" << tienda_valor_x_soldado        << " x "  << tienda_articulo_soldados        << " unidades." << endl;
-                    cout << "2. Comida            $" << tienda_valor_x_comida         << " x "  << tienda_articulo_comida          << " unidades." << endl;
-                    cout << "3. Mejorar pasiva    $" << tienda_valor_x_mejora_pasiva  << " x +" << tienda_articulo_mejora_pasiva   << "." << endl;
-                    cout << "4. Volver al menu principal" << endl;
-                    cout << "---------------------------------------" << endl;
-                    cout << "Opcion: ";
-                    cin >> cin_opcion_tienda;
+                    rlutil::setBackgroundColor(rlutil::RED);
+                    rlutil::setColor(rlutil::WHITE);
+                    rlutil::locate(47,4);
+                    cout<<"---------------------------------------"<<endl;
 
-                    system("cls");
 
-                    switch(cin_opcion_tienda)
+                    rlutil::setBackgroundColor(rlutil::BROWN);
+                    rlutil::setColor(rlutil::WHITE);
+                    rlutil::locate(47,5);
+                    cout<<"                                       "<<endl;
+
+
+                    rlutil::setBackgroundColor(rlutil::YELLOW);
+                    rlutil::setColor(rlutil::BLACK);
+                    rlutil::locate(51,5);
+                    cout<<"        JUEGO DE TRONOS        "<<endl;
+
+
+                    rlutil::setBackgroundColor(rlutil::RED);
+                    rlutil::setColor(rlutil::WHITE);
+                    rlutil::locate(47,6);
+                    cout<<"---------------------------------------"<<endl;
+
+                    rlutil::hidecursor();
+                    rlutil::setBackgroundColor(rlutil::BLACK);
+
+                    ///RECUADRO "TIENDA" ----------------------------------------------------------------------------
+
+                    rlutil::setBackgroundColor(rlutil::YELLOW);
+                    rlutil::setColor(rlutil::BLACK);
+                    rlutil::locate(47,9);
+                    cout<<"-------------    TIENDA    ------------"<<endl;
+                    rlutil::setBackgroundColor(rlutil::BLACK);
+
+                    /// DATOS DEL CLAN ----------------------------------------------------------------------------
+
+                    rlutil::setColor(rlutil::WHITE);
+                    rlutil::locate(47,11);
+                    cout << "     |Oro                 : " << juego_oro                  << endl;
+                    rlutil::locate(47,12);
+                    cout << "     |Comida              : " << juego_comida               << endl;
+                    rlutil::locate(47,13);
+                    cout << "     |Soldados            : " << juego_soldados             << endl;
+                    rlutil::locate(47,14);
+                    cout << "     |Pasiva              : " << batalla_pasiva_probabilidad<< endl;
+                    rlutil::setColor(rlutil::WHITE);
+
+                    /// PINTAR "SOLDADOS" ----------------------------------------------------------------------------
+
+                    if(opcion_tienda==0)
                     {
-                        case idx_opcion_tienda_soldados:
+                        rlutil::setBackgroundColor(rlutil::BROWN);
+                        rlutil::locate(47,17);
+                        cout<<" "<<(char)175<<"  SOLDADOS  $"<<tienda_valor_x_soldado<< " x "  <<tienda_articulo_soldados<< " UNIDADES  "<<(char)174<<" ";
+                    }
+                    else
+                    {
+                        rlutil::setBackgroundColor(rlutil::BLACK);
+                        rlutil::locate(47,17);
+                        cout<<"    SOLDADOS  $"<<tienda_valor_x_soldado<< " x "  <<tienda_articulo_soldados<< " UNIDADES    "<<endl;
+                    }
+
+                    /// PINTAR "COMIDA" ----------------------------------------------------------------------------
+
+                    if(opcion_tienda==1)
+                    {
+                        rlutil::setBackgroundColor(rlutil::BROWN);
+                        rlutil::locate(47,18);
+                        cout<<" "<<(char)175<<"    COMIDA  $" << tienda_valor_x_comida         << " x "  << tienda_articulo_comida          << " UNIDADES    "<<(char)174<<" ";
+                    }
+                    else
+                    {
+                        rlutil::setBackgroundColor(rlutil::BLACK);
+                        rlutil::locate(47,18);
+                        cout<<"      COMIDA  $" << tienda_valor_x_comida         << " x "  << tienda_articulo_comida          << " UNIDADES      "<<endl;
+                    }
+
+                    /// PINTAR "MEJORA PASIVA" ----------------------------------------------------------------------------
+
+                    if(opcion_tienda==2)
+                    {
+                        rlutil::setBackgroundColor(rlutil::BROWN);
+                        rlutil::locate(47,19);
+                        cout<<" "<<(char)175<<"   MEJORAR PASIVA  $" << tienda_valor_x_mejora_pasiva  << " x +" << tienda_articulo_mejora_pasiva   << "   "<<(char)174<<" ";
+                    }
+                    else
+                    {
+                        rlutil::setBackgroundColor(rlutil::BLACK);
+                        rlutil::locate(47,19);
+                        cout<<"     MEJORAR PASIVA  $" << tienda_valor_x_mejora_pasiva  << " x +" << tienda_articulo_mejora_pasiva   << "     "<<endl;
+                    }
+
+                    /// PINTAR "VOLVER MENU PRINCIPAL" ----------------------------------------------------------------------------
+
+                    if(opcion_tienda==3)
+                    {
+                        rlutil::setBackgroundColor(rlutil::BROWN);
+                        rlutil::locate(47,20);
+                        cout<<" "<<(char)175<<"     VOLVER AL MENU PRINCIPAL      "<<(char)174<<" ";
+                    }
+                    else
+                    {
+                        rlutil::setBackgroundColor(rlutil::BLACK);
+                        rlutil::locate(47,20);
+                        ///   "-------------    TIENDA    ------------"
+                        cout<<"       VOLVER AL MENU PRINCIPAL        "<<endl;
+                    }
+                    rlutil::setBackgroundColor(rlutil::BLACK);
+
+                    /// LOGICA DE LA TIENDA ----------------------------------------------------------------------------
+
+                    tecla_tienda= rlutil::getkey();
+                    switch(tecla_tienda)
+                    {
+                    case 14: //ARRIBA
+                        rlutil::locate(50,10+opcion_tienda);
+                        cout<<" "<<endl;
+                        opcion_tienda--;
+                        if(opcion_tienda<0)
+                        {
+                            opcion_tienda=3;
+                        }
+                        break;
+                    case 15: //ABAJO
+                        rlutil::locate(50,10+opcion_tienda);
+                        cout<<" "<<endl;
+                        opcion_tienda++;
+                        if(opcion_tienda>3)
+                        {
+                            opcion_tienda=0;
+                        }
+                        break;
+                    case 1: //ENTER
+                        switch(opcion_tienda)
+                        {
+
+                        case 0: /// SOLDADOS
                         {
                             if (juego_oro >= tienda_valor_x_soldado)
                             {
@@ -316,7 +600,7 @@ int main()
 
                             break;
                         }
-                        case idx_opcion_tienda_comida:
+                        case 1: /// COMIDA
                         {
                             if (juego_oro >= tienda_valor_x_comida)
                             {
@@ -340,7 +624,7 @@ int main()
 
                             break;
                         }
-                        case idx_opcion_tienda_mejora_pasiva:
+                        case 2: /// MEJORA
                         {
                             if (juego_oro >= tienda_valor_x_mejora_pasiva)
                             {
@@ -359,20 +643,20 @@ int main()
 
                             break;
                         }
-                        case idx_opcion_tienda_volver:
-                        default:
-                        {
-                            break;
+                        case 3: /// VOLVER AL MENU PRINCIPAL
+                            opcion_tienda=4;
+                            system("cls");
                         }
                     }
-                }
 
+                } ///TERMINA WHILE DE TIENDA
                 break;
-            }
-            case idx_opcion_menu_volver:
+            }///TERMINA SWITHC DE TIENDA
+            case 2: /// SALIR DEL JUEGO
             {
                 return 0;
             }
-        }
-    }
+            } /// TERMINA SWITH DEL MENU INTERNO
+        } /// TERMINA SWITCH DE LOGICA DEL MENU
+    } /// TERMINA WHILE DE MENU PRINCIPAL
 }
