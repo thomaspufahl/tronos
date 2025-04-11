@@ -141,6 +141,33 @@ int main()
     /// MENU
     while(true)
     {
+        ///LANNISTER ESLOGAN
+        rlutil::locate(44,25);
+        rlutil::setBackgroundColor(rlutil::RED);
+        cout<<"                                             "<<endl;
+        rlutil::locate(44,29);
+        rlutil::setBackgroundColor(rlutil::RED);
+        cout<<"                                             "<<endl;
+        for (int i=25; i<29; i++)
+        {
+            rlutil::setBackgroundColor(rlutil::RED);
+            rlutil::locate(44,i);
+            cout<<"  "<<endl;
+        }
+        for (int i=25; i<29; i++)
+        {
+            rlutil::setBackgroundColor(rlutil::RED);
+            rlutil::locate(87,i);
+            cout<<"  "<<endl;
+        }
+        rlutil::setBackgroundColor(rlutil::BLACK);
+        rlutil::setColor(rlutil::YELLOW);
+
+        rlutil::locate(48, 27), cout << "Un Lannister siempre paga sus deudas!";
+
+        /// Se hace esto para pintar nuevamente de negro el fondo y blanco las letras por debajo
+        rlutil::setBackgroundColor(rlutil::BLACK);
+        rlutil::setColor(rlutil::WHITE);
 
         rlutil::locate(19,32);
         cout << "  _____          __  __ ______    ____  ______   _______ _    _ _____   ____  _   _ ______  _____ " << endl;
@@ -503,6 +530,34 @@ int main()
                 opcion_tienda=0;
                 while(opcion_tienda!=4)
                 {
+
+                    ///LANNISTER ESLOGAN
+                    rlutil::locate(44,25);
+                    rlutil::setBackgroundColor(rlutil::RED);
+                    cout<<"                                             "<<endl;
+                    rlutil::locate(44,29);
+                    rlutil::setBackgroundColor(rlutil::RED);
+                    cout<<"                                             "<<endl;
+                    for (int i=25; i<29; i++)
+                    {
+                        rlutil::setBackgroundColor(rlutil::RED);
+                        rlutil::locate(44,i);
+                        cout<<"  "<<endl;
+                    }
+                    for (int i=25; i<29; i++)
+                    {
+                        rlutil::setBackgroundColor(rlutil::RED);
+                        rlutil::locate(87,i);
+                        cout<<"  "<<endl;
+                    }
+                    rlutil::setBackgroundColor(rlutil::BLACK);
+                    rlutil::setColor(rlutil::YELLOW);
+
+                    rlutil::locate(48, 27), cout << "Un Lannister siempre paga sus deudas!";
+
+                    /// Se hace esto para pintar nuevamente de negro el fondo y blanco las letras por debajo
+                    rlutil::setBackgroundColor(rlutil::BLACK);
+                    rlutil::setColor(rlutil::WHITE);
 
                     rlutil::locate(19,32);
                     cout << "  _____          __  __ ______    ____  ______   _______ _    _ _____   ____  _   _ ______  _____ " << endl;
