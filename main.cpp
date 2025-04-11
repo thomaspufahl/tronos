@@ -1,12 +1,16 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <windows.h>
 
 using namespace std;
 #include "rlutil.h"
 
 int main()
 {
+    /// RENDERIZAR CONSOLA EN TAMAÑO COMPLETO
+    ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+
     /// JUGABILIDAD
     const int juego_presupuesto_base = 50000;
     int juego_oro = juego_presupuesto_base;

@@ -4,13 +4,14 @@
 	<cstdlib>
 	<ctime>
 
-1744321373 source:c:\users\joel_\onedrive\escritorio\tronos\main.cpp
+1744407422 source:c:\users\joel_\onedrive\escritorio\tronos\main.cpp
 	<iostream>
 	<cstdlib>
 	<ctime>
+	<windows.h>
 	"rlutil.h"
 
-1571584339 c:\users\joel_\onedrive\escritorio\tronos\rlutil.h
+1744332190 c:\users\joel_\onedrive\escritorio\tronos\rlutil.h
 	<iostream>
 	<string>
 	<cstdio>
