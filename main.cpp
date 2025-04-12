@@ -143,9 +143,9 @@ int main()
     };
 
 
-    ///RECUADRO FRASE ----------------------------------------------------------------------------
     while(true)
     {
+        ///RECUADRO FRASE ----------------------------------------------------------------------------
         rlutil::locate(53,26);  // +9
         rlutil::setBackgroundColor(rlutil::RED);
         cout<<"                                             "<<endl;
@@ -534,54 +534,56 @@ int main()
                 while(opcion_tienda!=4)
                 {
 
-                    ///LANNISTER ESLOGAN
-                    rlutil::locate(44,25);
+                    ///RECUADRO FRASE ----------------------------------------------------------------------------
+                    rlutil::locate(53,26);  // +9
                     rlutil::setBackgroundColor(rlutil::RED);
                     cout<<"                                             "<<endl;
-                    rlutil::locate(44,29);
+                    rlutil::locate(53,30);  // +9
                     rlutil::setBackgroundColor(rlutil::RED);
                     cout<<"                                             "<<endl;
-                    for (int i=25; i<29; i++)
+                    for (int i=26; i<30; i++)
                     {
                         rlutil::setBackgroundColor(rlutil::RED);
-                        rlutil::locate(44,i);
+                        rlutil::locate(53,i);  // +9
                         cout<<"  "<<endl;
                     }
-                    for (int i=25; i<29; i++)
+                    for (int i=26; i<30; i++)
                     {
                         rlutil::setBackgroundColor(rlutil::RED);
-                        rlutil::locate(87,i);
+                        rlutil::locate(96,i);  // +9
                         cout<<"  "<<endl;
                     }
                     rlutil::setBackgroundColor(rlutil::BLACK);
                     rlutil::setColor(rlutil::YELLOW);
 
-                    rlutil::locate(48, 27), cout << "Un Lannister siempre paga sus deudas!";
+                    rlutil::locate(57, 28), cout << "Un Lannister siempre paga sus deudas!";  // +9
 
                     /// Se hace esto para pintar nuevamente de negro el fondo y blanco las letras por debajo
                     rlutil::setBackgroundColor(rlutil::BLACK);
                     rlutil::setColor(rlutil::WHITE);
 
-                    rlutil::locate(19,32);
+                    ///LOGO GAME OF THRONES ----------------------------------------------------------------------------
+
+                    rlutil::locate(27,32);  // +9
                     cout << "  _____          __  __ ______    ____  ______   _______ _    _ _____   ____  _   _ ______  _____ " << endl;
-                    rlutil::locate(19,33);
+                    rlutil::locate(27,33);  // +9
                     cout << " / ____|   /\\   |  \\/  |  ____|  / __ \\|  ____| |__   __| |  | |  __ \\ / __ \\| \\ | |  ____|/ ____|" << endl;
-                    rlutil::locate(19,34);
+                    rlutil::locate(27,34);  // +9
                     cout << "| |  __   /  \\  | \\  / | |__    | |  | | |__       | |  | |__| | |__) | |  | |  \\| | |__  | (___  " << endl;
-                    rlutil::locate(19,35);
+                    rlutil::locate(27,35);  // +9
                     cout << "| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |  __|      | |  |  __  |  _  /| |  | | . ` |  __|  \\___ \\ " << endl;
-                    rlutil::locate(19,36);
+                    rlutil::locate(27,36);  // +9
                     cout << "| |__| |/ ____ \\| |  | | |____  | |__| | |         | |  | |  | | | \\ \\| |__| | |\\  | |____ ____) |" << endl;
-                    rlutil::locate(19,37);
+                    rlutil::locate(27,37);  // +9
                     cout << " \\_____/_/    \\_\\_|  |_|______|  \\____/|_|         |_|  |_|  |_|_|  \\_\\\\____/|_| \\_|______|_____/ " << endl;
 
 
-                    ///LOGO
+                    ///LOGOS ESCUDO LANNISTER ----------------------------------------------------------------------------
                     for (int i = 0; i < logo_dimensionY; i++)
                     {
                         for (int j = 0; j < logo_dimensionX; j++)
                         {
-                            rlutil::locate(10 + j, 1 + i);
+                            rlutil::locate(8 + j, 2 + i);  // +9
                             switch (lannister_logo[i][j])
                             {
                             case 1:
@@ -589,13 +591,16 @@ int main()
                                 cout << " ";
                                 break;
                             case 2:
-                                rlutil::setBackgroundColor(rlutil::YELLOW);
+                                rlutil::setBackgroundColor(rlutil::LIGHTRED);
                                 cout << " ";
                                 break;
                             case 3:
                                 rlutil::setBackgroundColor(rlutil::BROWN);
                                 cout << " ";
                                 break;
+                            case 4:
+                                rlutil::setBackgroundColor(rlutil::YELLOW);
+                                cout << " ";
                             default:
                                 rlutil::setBackgroundColor(rlutil::BLACK);
                                 cout << " ";
@@ -607,7 +612,7 @@ int main()
                     {
                         for (int j = 0; j < logo_dimensionX; j++)
                         {
-                            rlutil::locate(95 + j, 1 + i);
+                            rlutil::locate(108 + j, 2 + i);  // +9
                             switch (lannister_logo[i][j])
                             {
                             case 1:
@@ -615,90 +620,88 @@ int main()
                                 cout << " ";
                                 break;
                             case 2:
-                                rlutil::setBackgroundColor(rlutil::YELLOW);
+                                rlutil::setBackgroundColor(rlutil::LIGHTRED);
                                 cout << " ";
                                 break;
                             case 3:
                                 rlutil::setBackgroundColor(rlutil::BROWN);
                                 cout << " ";
                                 break;
+                            case 4:
+                                rlutil::setBackgroundColor(rlutil::YELLOW);
+                                cout << " ";
                             default:
                                 rlutil::setBackgroundColor(rlutil::BLACK);
                                 cout << " ";
                             }
                         }
                     }
-
 
                     ///RECUADRO EXTERIOR TIENDA ----------------------------------------------------------------------------
 
                     rlutil::setBackgroundColor(rlutil::RED);
-                    rlutil::locate(43,2);
+                    rlutil::locate(52,3);
                     cout<<"                                             "<<endl;
-
 
                     for (int i=3; i<23; i++)
                     {
                         rlutil::setBackgroundColor(rlutil::RED);
-                        rlutil::locate(43,i);
+                        rlutil::locate(52,i+1);
                         cout<<"  "<<endl;
                     }
                     rlutil::setBackgroundColor(rlutil::RED);
-                    rlutil::locate(45,22);
+                    rlutil::locate(54,23);
                     cout<<"                                           "<<endl;
+
                     for (int i=2; i<23; i++)
                     {
                         rlutil::setBackgroundColor(rlutil::RED);
-                        rlutil::locate(88,i);
+                        rlutil::locate(97,i+1);
                         cout<<"  "<<endl;
                     }
 
-                    ///RECUADRO "JUEGO DE TRONOS" ----------------------------------------------------------------------------
-
+                    /// RECUADRO "JUEGO DE TRONOS"
                     rlutil::setBackgroundColor(rlutil::RED);
                     rlutil::setColor(rlutil::WHITE);
-                    rlutil::locate(47,4);
+                    rlutil::locate(56,5);
                     cout<<"---------------------------------------"<<endl;
-
 
                     rlutil::setBackgroundColor(rlutil::BROWN);
                     rlutil::setColor(rlutil::WHITE);
-                    rlutil::locate(47,5);
+                    rlutil::locate(56,6);
                     cout<<"                                       "<<endl;
-
 
                     rlutil::setBackgroundColor(rlutil::YELLOW);
                     rlutil::setColor(rlutil::BLACK);
-                    rlutil::locate(51,5);
+                    rlutil::locate(60,6);
                     cout<<"        JUEGO DE TRONOS        "<<endl;
-
 
                     rlutil::setBackgroundColor(rlutil::RED);
                     rlutil::setColor(rlutil::WHITE);
-                    rlutil::locate(47,6);
+                    rlutil::locate(56,7);
                     cout<<"---------------------------------------"<<endl;
+                    rlutil::setBackgroundColor(rlutil::BLACK);
 
                     rlutil::hidecursor();
-                    rlutil::setBackgroundColor(rlutil::BLACK);
 
-                    ///RECUADRO "TIENDA" ----------------------------------------------------------------------------
-
+                    /// RECUADRO "LANNISTER"
                     rlutil::setBackgroundColor(rlutil::YELLOW);
                     rlutil::setColor(rlutil::BLACK);
-                    rlutil::locate(47,9);
+                    rlutil::locate(56,10);
                     cout<<"-------------    TIENDA    ------------"<<endl;
                     rlutil::setBackgroundColor(rlutil::BLACK);
+
 
                     /// DATOS DEL CLAN ----------------------------------------------------------------------------
 
                     rlutil::setColor(rlutil::WHITE);
-                    rlutil::locate(47,11);
+                    rlutil::locate(56,12);
                     cout << "     |Oro                 : " << juego_oro                  << endl;
-                    rlutil::locate(47,12);
+                    rlutil::locate(56,13);
                     cout << "     |Comida              : " << juego_comida               << endl;
-                    rlutil::locate(47,13);
+                    rlutil::locate(56,14);
                     cout << "     |Soldados            : " << juego_soldados             << endl;
-                    rlutil::locate(47,14);
+                    rlutil::locate(56,15);
                     cout << "     |Pasiva              : " << batalla_pasiva_probabilidad<< endl;
                     rlutil::setColor(rlutil::WHITE);
 
@@ -707,13 +710,13 @@ int main()
                     if(opcion_tienda==0)
                     {
                         rlutil::setBackgroundColor(rlutil::BROWN);
-                        rlutil::locate(47,17);
+                        rlutil::locate(56,18);
                         cout<<" "<<(char)175<<"  SOLDADOS  $"<<tienda_valor_x_soldado<< " x "  <<tienda_articulo_soldados<< " UNIDADES  "<<(char)174<<" ";
                     }
                     else
                     {
                         rlutil::setBackgroundColor(rlutil::BLACK);
-                        rlutil::locate(47,17);
+                        rlutil::locate(56,18);
                         cout<<"    SOLDADOS  $"<<tienda_valor_x_soldado<< " x "  <<tienda_articulo_soldados<< " UNIDADES    "<<endl;
                     }
 
@@ -722,13 +725,13 @@ int main()
                     if(opcion_tienda==1)
                     {
                         rlutil::setBackgroundColor(rlutil::BROWN);
-                        rlutil::locate(47,18);
+                        rlutil::locate(56,19);
                         cout<<" "<<(char)175<<"    COMIDA  $" << tienda_valor_x_comida         << " x "  << tienda_articulo_comida          << " UNIDADES    "<<(char)174<<" ";
                     }
                     else
                     {
                         rlutil::setBackgroundColor(rlutil::BLACK);
-                        rlutil::locate(47,18);
+                        rlutil::locate(56,19);
                         cout<<"      COMIDA  $" << tienda_valor_x_comida         << " x "  << tienda_articulo_comida          << " UNIDADES      "<<endl;
                     }
 
@@ -737,13 +740,13 @@ int main()
                     if(opcion_tienda==2)
                     {
                         rlutil::setBackgroundColor(rlutil::BROWN);
-                        rlutil::locate(47,19);
+                        rlutil::locate(56,20);
                         cout<<" "<<(char)175<<"   MEJORAR PASIVA  $" << tienda_valor_x_mejora_pasiva  << " x +" << tienda_articulo_mejora_pasiva   << "   "<<(char)174<<" ";
                     }
                     else
                     {
                         rlutil::setBackgroundColor(rlutil::BLACK);
-                        rlutil::locate(47,19);
+                        rlutil::locate(56,20);
                         cout<<"     MEJORAR PASIVA  $" << tienda_valor_x_mejora_pasiva  << " x +" << tienda_articulo_mejora_pasiva   << "     "<<endl;
                     }
 
@@ -752,13 +755,13 @@ int main()
                     if(opcion_tienda==3)
                     {
                         rlutil::setBackgroundColor(rlutil::BROWN);
-                        rlutil::locate(47,20);
+                        rlutil::locate(56,21);
                         cout<<" "<<(char)175<<"     VOLVER AL MENU PRINCIPAL      "<<(char)174<<" ";
                     }
                     else
                     {
                         rlutil::setBackgroundColor(rlutil::BLACK);
-                        rlutil::locate(47,20);
+                        rlutil::locate(56,21);
                         ///   "-------------    TIENDA    ------------"
                         cout<<"       VOLVER AL MENU PRINCIPAL        "<<endl;
                     }
@@ -770,8 +773,6 @@ int main()
                     switch(tecla_tienda)
                     {
                     case 14: //ARRIBA
-                        rlutil::locate(50,10+opcion_tienda);
-                        cout<<" "<<endl;
                         opcion_tienda--;
                         if(opcion_tienda<0)
                         {
@@ -779,8 +780,6 @@ int main()
                         }
                         break;
                     case 15: //ABAJO
-                        rlutil::locate(50,10+opcion_tienda);
-                        cout<<" "<<endl;
                         opcion_tienda++;
                         if(opcion_tienda>3)
                         {
