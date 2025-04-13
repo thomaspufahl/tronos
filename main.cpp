@@ -10,7 +10,7 @@ using namespace std;
 int main()
 {
     /// RENDERIZAR CONSOLA EN TAMAÑO COMPLETO
-    //ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+    ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
 
     /// JUGABILIDAD
     const int juego_presupuesto_base = 50000;
@@ -351,8 +351,6 @@ int main()
         switch(tecla_menu)
         {
         case 14: //ARRIBA
-//            rlutil::locate(59,10+opcion_menu);  // +9
-//            cout<<" "<<endl;
             opcion_menu--;
             if(opcion_menu<0)
             {
@@ -360,8 +358,6 @@ int main()
             }
             break;
         case 15: //ABAJO
-//            rlutil::locate(59,10+opcion_menu);  // +9
-//            cout<<" "<<endl;
             opcion_menu++;
             if(opcion_menu>2)
             {
@@ -378,7 +374,7 @@ int main()
                 while(true){
 
                     ///VALIDO APTITUD PARA LA GUERRA
-                    if (batalla_actual > batalla_duracion_guerra)
+                    if (batalla_actual >= batalla_duracion_guerra)
                     {
                         cout << "No hay mas batallas por luchar, puedes descansar!" << endl;
 
@@ -602,14 +598,13 @@ int main()
                             }
                             break;
                         case 1: //ENTER
-                            system("cls");
                             while_menu_batalla = 0;
                             break;
                         }
                     }
 
-
                     system("cls");
+
                     if (opcion_menu_batalla)
                     {
                         break;
@@ -617,7 +612,7 @@ int main()
 
                     batalla_actual++;
 
-                    if (batalla_actual == batalla_duracion_guerra)
+                    /*if (batalla_actual == batalla_duracion_guerra)
                     {
                         rlutil::locate(64,10);
                         cout << "    ~~ ULTIMA BATALLA ~~ " << batalla_actual << endl;
@@ -625,14 +620,12 @@ int main()
                     else{
                         rlutil::locate(65,10);
                         cout << "~~ Batalla Numero " << batalla_actual << " ~~" << endl;
-                    }
+                    }*/
 
                     /// INICIO
 
                     /// PASIVA
                     batalla_pasiva_nro_random = (float)(rand() % 100) / 100;
-
-                    cout << "NRO RANDOM: " << batalla_pasiva_nro_random << endl;
 
                     /*
 
@@ -656,7 +649,7 @@ int main()
                         est_batalla_pasiva_uso_cantidad++;
                         batalla_pasiva_eval_activada = true;
 
-                        cout << "Si ganas, obtendras un " << batalla_pasiva_beneficio * 100 << "% de oro extra!" << endl;
+                        //cout << "Si ganas, obtendras un " << batalla_pasiva_beneficio * 100 << "% de oro extra!" << endl;
                     }
                     else
                     {
@@ -884,7 +877,7 @@ int main()
             case 1: /// MENU TIENDA
             {
 
-                opcion_tienda=0;
+                opcion_tienda = 0;
                 while(opcion_tienda!=4)
                 {
 
@@ -1123,7 +1116,7 @@ int main()
 
                     /// LOGICA DE LA TIENDA ----------------------------------------------------------------------------
 
-                    tecla_tienda= rlutil::getkey();
+                    tecla_tienda = rlutil::getkey();
                     switch(tecla_tienda)
                     {
                     case 14: //ARRIBA
@@ -1162,7 +1155,6 @@ int main()
 
                                 cout << endl;
 
-                                cout << "Presiona cualquier tecla para volver al menu.";
                                 system("pause");
                             }
 
@@ -1212,7 +1204,7 @@ int main()
                             break;
                         }
                         case 3: /// VOLVER AL MENU PRINCIPAL
-                            opcion_tienda=4;
+                            opcion_tienda = 4;
                             system("cls");
                         }
                     }
