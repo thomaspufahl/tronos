@@ -2,15 +2,27 @@
 #include <cstdlib>
 #include <ctime>
 #include <conio.h> // getch()
-#include <windows.h>
+//#include <windows.h>
 
 using namespace std;
 #include "rlutil.h"
 
 int main()
 {
-    /// RENDERIZAR CONSOLA EN TAMAÑO COMPLETO
-    ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+    /// CONFIGURACION DEL BUFFER Y LA VENTANA DE LA CONSOLA
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    // Cambiar tamaño del búfer
+    COORD bufferSize = { (SHORT)150, (SHORT)38 };
+    SetConsoleScreenBufferSize(hConsole, bufferSize);
+    // Cambiar tamaño de la ventana
+    SMALL_RECT windowSize = { 0, 0, (SHORT)(150 - 1), (SHORT)(38 - 1) };
+    SetConsoleWindowInfo(hConsole, TRUE, &windowSize);
+
+
+    /// RENDERIZAR CONSOLA EN PANTALLA COMPLETO
+    SendMessage(GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000); // Alt + Enter
+
+
 
     /// JUGABILIDAD
     const int juego_presupuesto_base = 50000;
