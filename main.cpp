@@ -393,23 +393,25 @@ int main()
                         cout << endl;
 
                         system("pause");
+                        system("cls");
                         break;
                     }
                     if(juego_comida < max_perdida_comida)
                     {
-                        cout << "No tienes la cantidad de comida suficiente para ir a la batalla!" << endl;
-                        cout << "Compra mas comida en la tienda y vuelve mas tarde..." << endl;
-                        cout << endl;
-                        system("pause");
+
+                        rlutil::locate(43,15);cout << "No tienes la cantidad de comida suficiente para ir a la batalla!" << endl;
+                        rlutil::locate(49,16);cout << "Compra mas comida en la tienda y vuelve mas tarde..." << endl;
+                        rlutil::locate(55,20);system("pause");
+                        system("cls");
                         break;
                     }
 
                     if(juego_soldados < max_perdida_soldados)
                     {
-                        cout << "No tienes la cantidad de soldados suficientes para ir a la batalla!" << endl;
-                        cout << "Compra mas soldados en la tienda y vuelve mas tarde..." << endl;
-                        cout << endl;
-                        system("pause");
+                        rlutil::locate(43,15);cout << "No tienes la cantidad de soldados suficientes para ir a la batalla!" << endl;
+                        rlutil::locate(49,16);cout << "Compra mas soldados en la tienda y vuelve mas tarde..." << endl;
+                        rlutil::locate(55,20);system("pause");
+                        system("cls");
                         break;
                     }
 
