@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1744513030 source:c:\users\scott\onedrive\desktop\facu\tronosstark\tronosstark\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<windows.h>
+	"rlutil.h"
+
+1744419071 c:\users\scott\onedrive\desktop\facu\tronosstark\tronosstark\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
+1744677154 source:c:\users\scott\onedrive\desktop\tronosstark\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<windows.h>
+	"rlutil.h"
+
+1744641801 c:\users\scott\onedrive\desktop\tronosstark\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
