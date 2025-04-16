@@ -47,3 +47,25 @@
 	<sys/types.h>
 	<sys/time.h>
 
+1744814983 source:c:\users\famil\onedrive\documentos\tronos\main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+	<conio.h>
+	<windows.h>
+	"rlutil.h"
+
+1744811033 c:\users\famil\onedrive\documentos\tronos\rlutil.h
+	<iostream>
+	<string>
+	<cstdio>
+	<stdio.h>
+	<string.h>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+	<sys/types.h>
+	<sys/time.h>
+
