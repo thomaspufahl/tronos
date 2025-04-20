@@ -50,14 +50,14 @@ int main()
     const float batalla_pasiva_base = 0.5;
     float batalla_pasiva_probabilidad = batalla_pasiva_base;
 
-    const float batalla_pasiva_beneficio = 0.2; // 20% extra en oro ganado
+//    const float batalla_pasiva_beneficio = 0.2; // 20% extra en oro ganado
     float batalla_pasiva_nro_random;
 
     bool batalla_pasiva_eval_activada;
 
     // combate
     int batalla_aux_oro_ganado_parcial = 0;
-    int batalla_aux_oro_ganado_pasiva  = 0;
+//    int batalla_aux_oro_ganado_pasiva  = 0;
     int batalla_aux_oro_ganado_total   = 0;
     int batalla_aux_comida_gastado;
     int batalla_aux_soldados_gastado;
@@ -490,7 +490,7 @@ int main()
                     rlutil::locate(27,37);  // +9
                     cout << " \\_____/_/    \\_\\_|  |_|______|  \\____/|_|         |_|  |_|  |_|_|  \\_\\\\____/|_| \\_|______|_____/ " << endl;
 
-                    ///LOGOS ESCUDO LANNISTER ----------------------------------------------------------------------------
+                    ///LOGOS ESCUDO STARK ----------------------------------------------------------------------------
                     for (int i = 0; i < logo_dimensionY; i++)
                     {
                         for (int j = 0; j < logo_dimensionX; j++)
@@ -605,44 +605,210 @@ int main()
 
                     batalla_actual++;
 
-                    /*if (batalla_actual == batalla_duracion_guerra)
-                    {
-                        rlutil::locate(64,10);
-                        cout << "    ~~ ULTIMA BATALLA ~~ " << batalla_actual << endl;
-                    }
-                    else{
-                        rlutil::locate(65,10);
-                        cout << "~~ Batalla Numero " << batalla_actual << " ~~" << endl;
-                    }*/
-
                     /// INICIO
 
                     /// PASIVA
                     batalla_pasiva_nro_random = (float)(rand() % 100) / 100;
 
-                    /*
-
-                     e.g: 0.2 < 0.5
-                     => la pasiva se activa ya que tenia un 50% de probabilidades de que el numero se encuentre debajo del 0.5
-
-                     e.g: 0.6 < 0.5
-                     => la pasiva no se activa ya que perdio contra el 50%
-
-                    */
-
-
                     if (batalla_pasiva_nro_random < batalla_pasiva_probabilidad)
                     {
-                         rlutil::setBackgroundColor(rlutil::YELLOW);
+                        rlutil::setBackgroundColor(rlutil::DARKGREY);
+                    rlutil::locate(52,3);
+                    cout<<"                                             "<<endl;
+
+                    for (int i=3; i<23; i++)
+                    {
+                        rlutil::setBackgroundColor(rlutil::DARKGREY);
+                        rlutil::locate(52,i+1);
+                        cout<<"  "<<endl;
+                    }
+                    rlutil::setBackgroundColor(rlutil::DARKGREY);
+                    rlutil::locate(54,23);
+                    cout<<"                                           " <<endl;
+
+                    for (int i=2; i<23; i++)
+                    {
+                        rlutil::setBackgroundColor(rlutil::DARKGREY);
+                        rlutil::locate(97,i+1);
+                        cout<<"  "<<endl;
+                    }
+
+                    /// RECUADRO "JUEGO DE TRONOS"
+                    rlutil::setBackgroundColor(rlutil::DARKGREY);
+                    rlutil::setColor(rlutil::WHITE);
+                    rlutil::locate(56,5);
+                    cout<<"---------------------------------------"<<endl;
+
+                    rlutil::setBackgroundColor(rlutil::LIGHTBLUE);
+                    rlutil::setColor(rlutil::WHITE);
+                    rlutil::locate(56,6);
+                    cout<<"                                       "<<endl;
+
+                    rlutil::setBackgroundColor(rlutil::BLUE);
+                    rlutil::setColor(rlutil::BLACK);
+                    rlutil::locate(60,6);
+                    cout<<"        JUEGO DE TRONOS        "<<endl;
+
+                    rlutil::setBackgroundColor(rlutil::DARKGREY);
+                    rlutil::setColor(rlutil::WHITE);
+                    rlutil::locate(56,7);
+                    cout<<"---------------------------------------"<<endl;
+                    rlutil::setBackgroundColor(rlutil::BLACK);
+
+                    rlutil::hidecursor();
+
+                    ///LOGO GAME OF THRONES ----------------------------------------------------------------------------
+
+                    rlutil::locate(27,32);  // +9
+                    cout << "  _____          __  __ ______    ____  ______   _______ _    _ _____   ____  _   _ ______  _____ " << endl;
+                    rlutil::locate(27,33);  // +9
+                    cout << " / ____|   /\\   |  \\/  |  ____|  / __ \\|  ____| |__   __| |  | |  __ \\ / __ \\| \\ | |  ____|/ ____|" << endl;
+                    rlutil::locate(27,34);  // +9
+                    cout << "| |  __   /  \\  | \\  / | |__    | |  | | |__       | |  | |__| | |__) | |  | |  \\| | |__  | (___  " << endl;
+                    rlutil::locate(27,35);  // +9
+                    cout << "| | |_ | / /\\ \\ | |\\/| |  __|   | |  | |  __|      | |  |  __  |  _  /| |  | | . ` |  __|  \\___ \\ " << endl;
+                    rlutil::locate(27,36);  // +9
+                    cout << "| |__| |/ ____ \\| |  | | |____  | |__| | |         | |  | |  | | | \\ \\| |__| | |\\  | |____ ____) |" << endl;
+                    rlutil::locate(27,37);  // +9
+                    cout << " \\_____/_/    \\_\\_|  |_|______|  \\____/|_|         |_|  |_|  |_|_|  \\_\\\\____/|_| \\_|______|_____/ " << endl;
+                    ///LOGOS ESCUDO LANNISTER ----------------------------------------------------------------------------
+                    for (int i = 0; i < logo_dimensionY; i++)
+                    {
+                        for (int j = 0; j < logo_dimensionX; j++)
+                        {
+                            rlutil::locate(8 + j, 2 + i);  // +9
+                            switch (stark_logo[i][j])
+                            {
+                            case 2:
+                                rlutil::setBackgroundColor(7);
+                                cout << " ";
+                                break;
+                            case 3:
+                                rlutil::setBackgroundColor(8);
+                                cout << " ";
+                                break;
+                            case 4:
+                                rlutil::setBackgroundColor(0);
+                                cout << " ";
+                                break;
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < logo_dimensionY; i++)
+                    {
+                        for (int j = 0; j < logo_dimensionX; j++)
+                        {
+                            rlutil::locate(108 + j, 2 + i);  // +9
+                            switch (stark_logo[i][j])
+                            {
+                            case 2:
+                                rlutil::setBackgroundColor(7);
+                                cout << " ";
+                                break;
+                            case 3:
+                                rlutil::setBackgroundColor(8);
+                                cout << " ";
+                                break;
+                            case 4:
+                                rlutil::setBackgroundColor(0);
+                                cout << " ";
+                                break;
+                            }
+                        }
+                    }
+
+                        rlutil::setBackgroundColor(rlutil::BLUE);
                         rlutil::setColor(rlutil::BLACK);
-                        rlutil::locate(56,12);
-                        cout<<"---------   PASIVA ACTIVADA!  ---------"<<endl;
+                        rlutil::locate(60,10);
+                        cout<<" --- HAS VISTO EL FUTURO... --- "<<endl;
                         rlutil::setColor(rlutil::WHITE);
                         rlutil::setBackgroundColor(rlutil::BLACK);
                         est_batalla_pasiva_uso_cantidad++;
                         batalla_pasiva_eval_activada = true;
 
-                        //cout << "Si ganas, obtendras un " << batalla_pasiva_beneficio * 100 << "% de oro extra!" << endl;
+                        int enemigos_simulados = rand() % 20000 + 1;
+
+                        rlutil::setBackgroundColor(rlutil::BLUE);
+                        rlutil::setColor(rlutil::BLACK);
+                        rlutil::locate(55,12);
+                        cout << " En tu vision aparecen " << enemigos_simulados << " enemigos... " << endl;
+                        rlutil::setColor(rlutil::WHITE);
+                        rlutil::setBackgroundColor(rlutil::BLACK);
+
+                        if (juego_soldados > enemigos_simulados)
+                        {
+                            rlutil::setBackgroundColor(rlutil::BLUE);
+                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::locate(55,14);
+                            cout << " Ganarias esta batalla segun la vision. " << endl;
+                            rlutil::setColor(rlutil::WHITE);
+                            rlutil::setBackgroundColor(rlutil::BLACK);
+                        }
+                        else
+                        {
+                            rlutil::setBackgroundColor(rlutil::BLUE);
+                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::locate(55,14);
+                            cout << " Perderias esta batalla segun la vision. " << endl;
+                            rlutil::setColor(rlutil::WHITE);
+                            rlutil::setBackgroundColor(rlutil::BLACK);
+                        }
+
+                        rlutil::setBackgroundColor(rlutil::BLUE);
+                        rlutil::setColor(rlutil::BLACK);
+                        rlutil::locate(59,16);
+                        cout << " CONTINUAR (S) - RETIRARSE (N): ";
+                        char decision;
+                        cin >> decision;
+                        rlutil::setColor(rlutil::WHITE);
+                        rlutil::setBackgroundColor(rlutil::BLACK);
+                        system("cls");
+
+                        while (decision != 'S' && decision != 's' && decision != 'N' && decision != 'n')
+                        {
+                            rlutil::setBackgroundColor(rlutil::BLUE);
+                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::locate(63,18);
+                            cout << " Entrada invalida (S/N): ";
+                            cin >> decision;
+                            rlutil::setColor(rlutil::WHITE);
+                            rlutil::setBackgroundColor(rlutil::BLACK);
+                            system("cls");
+                        }
+
+                        if (decision == 'N' || decision == 'n')
+                        {
+                            rlutil::setBackgroundColor(rlutil::BLUE);
+                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::locate(47,25);
+                            cout << " Te has retirado estrategicamente. Vivir es pelear otro dia. " << endl;
+                            rlutil::setColor(rlutil::WHITE);
+                            rlutil::setBackgroundColor(rlutil::BLACK);
+                            rlutil::locate(47,26);
+                            system("pause");
+                            break;
+                        }
+                        else if (decision == 'S' || decision == 's')
+                        {
+                            rlutil::setBackgroundColor(rlutil::BLUE);
+                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::locate(49,25);
+                            cout << "Los enemigos eran exactamente como viste: " << enemigos_simulados << " enemigos" << endl;
+                            rlutil::setColor(rlutil::WHITE);
+                            rlutil::setBackgroundColor(rlutil::BLACK);
+                            if (juego_soldados <= enemigos_simulados)
+                            {
+                                juego_soldados = 0;
+                                batalla_victoria_eval = false;
+                            }
+                            else
+                            {
+                                batalla_victoria_eval = true;
+                            }
+                        }
+
+
                     }
                     else
                     {
@@ -669,19 +835,9 @@ int main()
                         batalla_aux_comida_gastado     = rand() % 500;
                         batalla_aux_soldados_gastado   = rand() % 100;
 
-                        if (batalla_pasiva_eval_activada)
-                        {
-                            batalla_aux_oro_ganado_pasiva = batalla_pasiva_beneficio * batalla_aux_oro_ganado_parcial;
-                        }
-                        else
-                        {
-                            batalla_aux_oro_ganado_pasiva = 0;
-                        }
-
-                        batalla_aux_oro_ganado_total = batalla_aux_oro_ganado_parcial + batalla_aux_oro_ganado_pasiva;
+                        batalla_aux_oro_ganado_total = batalla_aux_oro_ganado_parcial;
                         juego_oro += batalla_aux_oro_ganado_total;
 
-                        est_batalla_pasiva_oro_ganado  += batalla_aux_oro_ganado_pasiva;
                         est_batalla_comida_perdido     += batalla_aux_comida_gastado;
                         est_batalla_soldados_perdido   += batalla_aux_soldados_gastado;
                         est_batalla_oro_ganado         += batalla_aux_oro_ganado_total;
@@ -690,7 +846,7 @@ int main()
                     }
                     else
                     {
-                         rlutil::setBackgroundColor(rlutil::BLUE);
+                        rlutil::setBackgroundColor(rlutil::BLUE);
                         rlutil::setColor(rlutil::BLACK);
                         rlutil::locate(56,10);
                         cout<<"----   HAS PERDIDO LA BATALLA!!!   ----"<<endl;
@@ -758,8 +914,6 @@ int main()
                     rlutil::locate(56,14);
                     cout << "    |Oro ganado en batalla : " << batalla_aux_oro_ganado_parcial << endl;
                     rlutil::locate(56,15);
-                    cout << "    |Oro ganado por pasiva : " << batalla_aux_oro_ganado_pasiva  << endl;
-                    rlutil::locate(56,16);
                     cout << "    |Oro ganado en total   : " << batalla_aux_oro_ganado_total   << endl;
                     rlutil::locate(56,17);
                     cout << "    |Comida perdida        : " << batalla_aux_comida_gastado     << endl;
@@ -835,7 +989,6 @@ int main()
                     juego_comida -= batalla_aux_comida_gastado;
 
                     batalla_aux_oro_ganado_parcial = 0;
-                    batalla_aux_oro_ganado_pasiva  = 0;
                     batalla_aux_oro_ganado_total   = 0;
                     batalla_aux_comida_gastado     = 0;
                     batalla_aux_soldados_gastado   = 0;
