@@ -719,7 +719,7 @@ int main()
                     }
 
                         rlutil::setBackgroundColor(rlutil::BLUE);
-                        rlutil::setColor(rlutil::BLACK);
+                        rlutil::setColor(rlutil::WHITE);
                         rlutil::locate(60,10);
                         cout<<" --- HAS VISTO EL FUTURO... --- "<<endl;
                         rlutil::setColor(rlutil::WHITE);
@@ -727,28 +727,28 @@ int main()
                         est_batalla_pasiva_uso_cantidad++;
                         batalla_pasiva_eval_activada = true;
 
-                        int enemigos_simulados = rand() % 20000 + 1;
+                        int enemigos_simulados = rand() % 5000 + 1;
 
                         rlutil::setBackgroundColor(rlutil::BLUE);
-                        rlutil::setColor(rlutil::BLACK);
+                        rlutil::setColor(rlutil::WHITE);
                         rlutil::locate(55,13);
                         cout << " En tu vision aparecen " << enemigos_simulados << " enemigos... " << endl;
-                        rlutil::setColor(rlutil::WHITE);
+                        //rlutil::setColor(rlutil::WHITE);
                         rlutil::setBackgroundColor(rlutil::BLACK);
 
                         if (juego_soldados > enemigos_simulados)
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
-                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::setColor(rlutil::WHITE);
                             rlutil::locate(55,16);
                             cout << " Ganarias esta batalla segun la vision. " << endl;
-                            rlutil::setColor(rlutil::WHITE);
+                            //rlutil::setColor(rlutil::WHITE);
                             rlutil::setBackgroundColor(rlutil::BLACK);
                         }
                         else
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
-                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::setColor(rlutil::WHITE);
                             rlutil::locate(55,16);
                             cout << " Perderias esta batalla segun la vision. " << endl;
                             rlutil::setColor(rlutil::WHITE);
@@ -756,7 +756,7 @@ int main()
                         }
 
                         rlutil::setBackgroundColor(rlutil::BLUE);
-                        rlutil::setColor(rlutil::BLACK);
+                        rlutil::setColor(rlutil::WHITE);
                         rlutil::locate(59,19);
                         cout << " CONTINUAR (S) - RETIRARSE (N): ";
                         char decision;
@@ -768,7 +768,7 @@ int main()
                         while (decision != 'S' && decision != 's' && decision != 'N' && decision != 'n')
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
-                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::setColor(rlutil::WHITE);
                             rlutil::locate(63,21);
                             cout << " Entrada invalida (S/N): ";
                             cin >> decision;
@@ -779,26 +779,28 @@ int main()
                         if (decision == 'N' || decision == 'n')
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
-                            rlutil::setColor(rlutil::BLACK);
+                            rlutil::setColor(rlutil::WHITE);
                             rlutil::locate(47,25);
                             cout << " Te has retirado estrategicamente. Vivir es pelear otro dia. " << endl;
                             rlutil::setColor(rlutil::WHITE);
                             rlutil::setBackgroundColor(rlutil::BLACK);
                             rlutil::locate(47,26);
                             system("pause");
+                            system("cls");
                             break;
                         }
                         else if (decision == 'S' || decision == 's')
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
-                            rlutil::setColor(rlutil::BLACK);
-                            rlutil::locate(48,25);
+                            rlutil::setColor(rlutil::WHITE);
+                            rlutil::locate(49,25);
                             cout << "Los enemigos eran exactamente como viste: " << enemigos_simulados << " enemigos" << endl;
                             rlutil::setColor(rlutil::WHITE);
                             rlutil::setBackgroundColor(rlutil::BLACK);
+
                             if (juego_soldados <= enemigos_simulados)
                             {
-                                juego_soldados = 0;
+                                //juego_soldados = 0;
                                 batalla_victoria_eval = false;
                             }
                             else
@@ -821,7 +823,7 @@ int main()
 
 
 
-                    if (batalla_victoria_eval)
+                    if (batalla_victoria_eval == true)
                     {
                         rlutil::setBackgroundColor(rlutil::BLUE);
                         rlutil::setColor(rlutil::BLACK);
@@ -985,6 +987,10 @@ int main()
 
                     //Descuento los recursos perdidos
                     juego_soldados -= batalla_aux_soldados_gastado;
+                    if(juego_soldados < 0)
+                    {
+                        juego_soldados = 0;
+                    }
                     juego_comida -= batalla_aux_comida_gastado;
 
                     batalla_aux_oro_ganado_parcial = 0;
