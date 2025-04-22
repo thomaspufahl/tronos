@@ -731,7 +731,7 @@ int main()
 
                         rlutil::setBackgroundColor(rlutil::BLUE);
                         rlutil::setColor(rlutil::BLACK);
-                        rlutil::locate(55,12);
+                        rlutil::locate(55,13);
                         cout << " En tu vision aparecen " << enemigos_simulados << " enemigos... " << endl;
                         rlutil::setColor(rlutil::WHITE);
                         rlutil::setBackgroundColor(rlutil::BLACK);
@@ -740,7 +740,7 @@ int main()
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
                             rlutil::setColor(rlutil::BLACK);
-                            rlutil::locate(55,14);
+                            rlutil::locate(55,16);
                             cout << " Ganarias esta batalla segun la vision. " << endl;
                             rlutil::setColor(rlutil::WHITE);
                             rlutil::setBackgroundColor(rlutil::BLACK);
@@ -749,7 +749,7 @@ int main()
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
                             rlutil::setColor(rlutil::BLACK);
-                            rlutil::locate(55,14);
+                            rlutil::locate(55,16);
                             cout << " Perderias esta batalla segun la vision. " << endl;
                             rlutil::setColor(rlutil::WHITE);
                             rlutil::setBackgroundColor(rlutil::BLACK);
@@ -757,7 +757,7 @@ int main()
 
                         rlutil::setBackgroundColor(rlutil::BLUE);
                         rlutil::setColor(rlutil::BLACK);
-                        rlutil::locate(59,16);
+                        rlutil::locate(59,19);
                         cout << " CONTINUAR (S) - RETIRARSE (N): ";
                         char decision;
                         cin >> decision;
@@ -769,12 +769,11 @@ int main()
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
                             rlutil::setColor(rlutil::BLACK);
-                            rlutil::locate(63,18);
+                            rlutil::locate(63,21);
                             cout << " Entrada invalida (S/N): ";
                             cin >> decision;
                             rlutil::setColor(rlutil::WHITE);
                             rlutil::setBackgroundColor(rlutil::BLACK);
-                            system("cls");
                         }
 
                         if (decision == 'N' || decision == 'n')
@@ -793,7 +792,7 @@ int main()
                         {
                             rlutil::setBackgroundColor(rlutil::BLUE);
                             rlutil::setColor(rlutil::BLACK);
-                            rlutil::locate(49,25);
+                            rlutil::locate(48,25);
                             cout << "Los enemigos eran exactamente como viste: " << enemigos_simulados << " enemigos" << endl;
                             rlutil::setColor(rlutil::WHITE);
                             rlutil::setBackgroundColor(rlutil::BLACK);
