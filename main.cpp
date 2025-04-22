@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <conio.h> // getch()
-//#include <windows.h>
+#include <windows.h>
 
 using namespace std;
 #include "rlutil.h"
