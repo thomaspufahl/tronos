@@ -313,8 +313,8 @@ int main()
         cout << "     |Pasiva              : " << batalla_pasiva_probabilidad<< endl;
         rlutil::setColor(rlutil::WHITE);
 
-//        bool menuPrincipalUpdate=false;
-//        while(!menuPrincipalUpdate)
+        bool menuPrincipalUpdate=false;
+        while(!menuPrincipalUpdate){
         /// PINTAR "IR A LA BATALLA"
         if(opcion_menu==0)
         {
@@ -380,6 +380,10 @@ int main()
             break;
         case 1: //ENTER
             system("cls");
+            menuPrincipalUpdate=true;
+
+        }
+        }
             switch(opcion_menu)
             {
             case 0: /// MENU BATALLA
@@ -1235,4 +1239,4 @@ int main()
             } /// TERMINA SWITH DEL MENU INTERNO
         } /// TERMINA SWITCH DE LOGICA DEL MENU
     } /// TERMINA WHILE DE MENU PRINCIPAL
-}
+
